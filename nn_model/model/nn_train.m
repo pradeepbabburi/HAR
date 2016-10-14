@@ -18,7 +18,7 @@ m = size(X_train, 1);
 %% Randomly select 20 data points to display
 sel = randperm(size(X_train, 1));
 sel = sel(1:20);
-X_train(sel,1:10)
+X_train(sel, 1:10)
 %y_train(sel)
 
 fprintf('Program paused. Press enter to continue.\n')
@@ -32,6 +32,7 @@ X_train = (X_train - mu) ./ sigma;
 
 fprintf('Showing normalized data ..\n')
 X_train(sel,1:10)
+fprintf('Program paused. Press enter to continue.\n')
 pause;
 
 %% Initialize network parameters
@@ -67,14 +68,23 @@ Theta1 = reshape(nn_params(1:hidden_layer_size * (input_layer_size + 1)), ...
 Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):end), ...
                  num_labels, (hidden_layer_size + 1));
 
-fprintf('Training complete. Program paused. Press enter to continue.\n')
+fprintf('Training complete. Program paused. Press enter to continue.\n');
 pause;
 
 
 %% Predict the model with trained Theta values
 
 pred = predict(Theta1, Theta2, X_train);
-
 fprintf('\nTraining Set Accuracy: %f\n', mean(double(pred == y_train)) * 100);
+fprintf('Program paused. Press enter to continue.\n');
+pause;
+
+%% predict the model on test data
+fprintf('Loading Test Data ...\n')
+load('samsungData_test');
+X_test = (X_test - mean(X_test))./std(X_test);
+pred_test = predict(Theta1, Theta2, X_test);
+fprintf('\nTest Set Accuracy: %f\n', mean(double(pred_test == y_test)) * 100);
+
 
 

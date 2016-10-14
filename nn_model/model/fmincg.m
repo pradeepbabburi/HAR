@@ -1,5 +1,5 @@
 function [X, fX, i] = fmincg(f, X, options, P1, P2, P3, P4, P5)
-% Minimize a continuous differentialble multivariate function. Starting point
+% Minimize a continuous differentiable multivariate function. Starting point
 % is given by "X" (D by 1), and the function named in the string "f", must
 % return a function value and a vector of partial derivatives. The Polack-
 % Ribiere flavour of conjugate gradients is used to compute search directions,

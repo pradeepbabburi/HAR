@@ -51,19 +51,14 @@ J = J + regz;
 % Error values, delta for each layer from the right in the network
 delta_3 = a_3 - y_matrix;     
 delta_2 = delta_3 * Theta2(:, 2:end) .* sigmoidGradient(a_1 * Theta1'); 
-% Accumulated delta values for each layer in the network
+% Accumulate delta values for each layer in the network
 D_1 = delta_2' * a_1;   
 D_2 = delta_3' * a_2;   
-% Gradient of the cost function for each layer in the network
-Theta1_grad = D_1 / m;
-Theta2_grad = D_2 / m;
 % Regularized Gradients
 Theta1(:,1) = 0;    %omit the first column from regularization
 Theta2(:,1) = 0;
-Theta1 = (lambda/m) * Theta1;
-Theta2 = (lambda/m) * Theta2;
-Theta1_grad = Theta1_grad + Theta1;
-Theta2_grad = Theta2_grad + Theta2;
+Theta1_grad = (1/m) * (D_1 + (lambda * Theta1));
+Theta2_grad = (1/m) * (D_2 + (lambda * Theta2));
 
 % -------------------------------------------------------------
 
