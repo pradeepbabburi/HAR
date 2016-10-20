@@ -35,21 +35,21 @@ X = [ones(m, 1) X];
 %
 % Part 3: Implement regularization with the cost function and gradients.
 %
-y_matrix = eye(num_labels)(y,:);  % expand y into a true/false matrix(single valued) for all examples
+y_mat = eye(num_labels)(y,:);  % expand y into a true/false matrix(single valued) for all examples
 a_1 = X;                          % activation vector - first layer 
 a_2 = sigmoid(a_1 * Theta1');     % activation vector  - hidden/second layer 
 a_2 = [ones(m, 1) a_2];           % add bias to the vector in previous step
 a_3 = sigmoid(a_2 * Theta2');     % activation vector - third/output layer
 
 % Cost function without regularization for the network
-cost = -(1/m)*((log(a_3).*y_matrix) + (log(1-a_3).*(1-y_matrix)));    
+cost = -(1/m)*((log(a_3).*y_mat) + (log(1-a_3).*(1-y_mat)));    
 J = sum(cost(:));
 % Regularization term
 regz = (lambda/(2*m)) * (sum(sum(Theta1(:, 2:end).^2)) + sum(sum(Theta2(:, 2:end).^2))); 
 % Add regularization to the cost
 J = J + regz;
 % Error values, delta for each layer from the right in the network
-delta_3 = a_3 - y_matrix;     
+delta_3 = a_3 - y_mat;     
 delta_2 = delta_3 * Theta2(:, 2:end) .* sigmoidGradient(a_1 * Theta1'); 
 % Accumulate delta values for each layer in the network
 D_1 = delta_2' * a_1;   

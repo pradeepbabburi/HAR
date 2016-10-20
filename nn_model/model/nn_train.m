@@ -25,15 +25,15 @@ fprintf('Program paused. Press enter to continue.\n')
 pause;
 
 %% normalize the features
-fprintf('Normalizing features ...\n')
-mu = mean(X_train);
-sigma = std(X_train);
-X_train = (X_train - mu) ./ sigma;
+%%fprintf('Normalizing features ...\n')
+%%mu = mean(X_train);
+%%sigma = std(X_train);
+%%X_train = (X_train - mu) ./ sigma;
 
-fprintf('Showing normalized data ..\n')
-X_train(sel,1:10)
-fprintf('Program paused. Press enter to continue.\n')
-pause;
+%%fprintf('Showing normalized data ..\n')
+%%X_train(sel,1:10)
+%%fprintf('Program paused. Press enter to continue.\n')
+%%pause;
 
 %% Initialize network parameters
 fprintf('\nInitializing Neural Network Parameters ...\n')
@@ -82,7 +82,6 @@ pause;
 %% predict the model on test data
 fprintf('Loading Test Data ...\n')
 load('samsungData_test');
-X_test = (X_test - mean(X_test))./std(X_test);
 pred_test = predict(Theta1, Theta2, X_test);
 fprintf('\nTest Set Accuracy: %f\n', mean(double(pred_test == y_test)) * 100);
 
