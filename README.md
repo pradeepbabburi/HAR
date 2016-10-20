@@ -1,4 +1,4 @@
-# har
+# HAR
 ## Human Activity Recognition
 
 A learning algorithm to predict human activity recognition using the sensory data from cell phone.
