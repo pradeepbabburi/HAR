@@ -8,7 +8,8 @@ The learning model is devised by a three layer neural network. The activation us
 The model is trained for about 100 iterations with regularization parameter set to 1.
 
 Training set accuracy ~ 97 percent
-Test set accuracy ~ 94 percent;
+
+Test set accuracy ~ 94 percent
 
 
 
